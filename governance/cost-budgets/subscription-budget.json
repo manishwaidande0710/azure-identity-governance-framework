@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "category": "Cost",
+    "amount": 25,
+    "timeGrain": "Monthly",
+    "timePeriod": {
+      "startDate": "2026-10-01T00:00:00Z"
+    },
+    "notifications": {
+      "Actual_80_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 80,
+        "contactEmails": [
+          "manishwaidande0710@gmail.com"
+        ],
+        "thresholdType": "Actual"
+      },
+      "Forecasted_100_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 100,
+        "contactEmails": [
+          "manishwaidande0710@gmail.com"
+        ],
+        "thresholdType": "Forecasted"
+      }
+    }
+  }
+}
