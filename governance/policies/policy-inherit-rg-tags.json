@@ -1,0 +1,42 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "[concat('tags[', parameters('tagName'), ']')]",
+          "exists": "false"
+        },
+        {
+          "value": "[resourceGroup().tags[parameters('tagName')]]",
+          "notEquals": ""
+        }
+      ]
+    },
+    "then": {
+      "effect": "Modify",
+      "details": {
+        "roleDefinitionIds": [
+          "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+          {
+            "operation": "add",
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourceGroup().tags[parameters('tagName')]]"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "tagName": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag Name",
+        "description": "The tag name to inherit from the parent resource group."
+      },
+      "defaultValue": "Environment"
+    }
+  }
+}

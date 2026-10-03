@@ -1,0 +1,27 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "not": {
+        "field": "location",
+        "in": "[parameters('allowedLocations')]"
+      }
+    },
+    "then": {
+      "effect": "Deny"
+    }
+  },
+  "parameters": {
+    "allowedLocations": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Allowed Locations",
+        "description": "The approved Azure regions for resource deployment."
+      },
+      "defaultValue": [
+        "centralindia",
+        "southindia"
+      ]
+    }
+  }
+}
